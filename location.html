@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiara Health Monitering System</title>
+    <link rel="icon" type="image/x-icon" href="/Assets/kiara-favicon-color (2).png">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Load Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+    <!-- Load Google Maps SDK -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEXVlA1eCqIc9pbN-2yHXZLGlyVHGkUpE"></script>
+    <script>
+        // Initialize Firebase with your project's configuration
+        const firebaseConfig = {
+        apiKey: "AIzaSyDgX4gm8d1fJ_YeLDNGgMpA7at2YoLr-i8",
+        authDomain: "kiara-a8a3f.firebaseapp.com",
+        databaseURL: "https://kiara-a8a3f-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "kiara-a8a3f",
+        storageBucket: "kiara-a8a3f.appspot.com",
+        messagingSenderId: "179860561475",
+        appId: "1:179860561475:web:b3d46333894bc7b0e0fef6"
+        };
+        firebase.initializeApp(firebaseConfig);
+
+        let map;
+        let marker;
+
+        function initMap() {
+            const initialLocation = { lat: 37.7749, lng: -122.4194 }; // Default location
+            map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 12,
+                center: initialLocation,
+            });
+
+            marker = new google.maps.Marker({
+                position: initialLocation,
+                map: map,
+                title: "Current Location",
+            });
+
+            // Fetch the latitude and longitude from Firebase
+            const locationRef = firebase.database().ref("location");
+            
+            // Listen for real-time changes to latitude and longitude
+            locationRef.on("value", (snapshot) => {
+                const location = snapshot.val(); // Get the location data from Firebase
+                if (location && location.latitude !== undefined && location.longitude !== undefined) {
+                    const newLocation = { lat: location.latitude, lng: location.longitude };
+                    marker.setPosition(newLocation); // Update the marker position
+                    map.setCenter(newLocation); // Optionally recenter the map
+                }
+            });
+        }
+    </script>
+</head>
+<body onload="initMap()">
+   <div class="navi">
+    <div class="main">
+        <img height="65" width="300" src="/Assets/kiara-high-resolution-logo-transparent (2).png" alt="logo">
+    </div>
+    <nav>
+        <ul>
+            <li><a href="./status.html">STATUS</a></li>
+            <li><a href="./stats.html">STATS</a></li>
+            <li><a href="./location.html">LOCATION</a></li>
+            <li><a href="./index.html">HOME</a></li>
+        </ul>
+    </nav>
+   </div>
+   <div id="map"></div> <!-- The Google Maps container -->
+</body>
+</html>

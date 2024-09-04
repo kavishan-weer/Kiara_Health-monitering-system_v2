@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiara Health Monitoring System</title>
+    <link rel="icon" type="image/x-icon" href="/Assets/kiara-favicon-color (2).png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <div id="particles-js"></div>
+    
+    <div class="navi">
+        <div class="main">
+            <img height="65" width="300" src="/Assets/kiara-high-resolution-logo-transparent (2).png" alt="logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="./status.html">STATUS</a></li>
+                <li><a href="./stats.html">STATS</a></li>
+                <li><a href="./location.html">LOCATION</a></li>
+                <li><a href="./index.html">HOME</a></li>
+            </ul>
+        </nav>
+    </div>
+    
+    <div class="sensor" id="sensor1">
+        <i class="fa-solid fa-heart-pulse fa-beat fa-4x" style="color: #e45959; --fa-animation-duration: 2s;"></i>
+        <h2>Heart Rate</h2>
+        <p id="sensor1Value">Loading...</p>
+    </div>
+    
+    <div class="sensor" id="sensor2">
+        <i class="fa-solid fa-mask-ventilator fa-fade fa-4x" style="color: #43bed3; --fa-animation-duration: 4s;"></i>
+        <h2>SPO2</h2>
+        <p id="sensor2Value">Loading...</p>
+    </div>
+    
+    <div class="sensor" id="sensor3">
+        <i class="fa-solid fa-temperature-half fa-4x" style="color: #d00606;"></i>
+        <h2>Body Temp</h2>
+        <p id="sensor3Value">Loading...</p>
+    </div>
+    
+    <div id="status-container">
+        <h2>Panic Button Status</h2>
+        <p id="status-message">Loading status...</p>
+    </div>
+
+    <div id="gauge-container1" class="gauge-container"></div>
+    <!--<div id="gauge-container2" class="gauge-container"></div>-->
+    
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.4/raphael-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/justgage/1.4.0/justgage.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
