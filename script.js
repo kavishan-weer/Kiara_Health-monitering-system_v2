@@ -115,13 +115,7 @@ particlesJS('particles-js', {
 
 // Initialize Firebase
 const firebaseConfig = {
-    apiKey: "AIzaSyDgX4gm8d1fJ_YeLDNGgMpA7at2YoLr-i8",
-    authDomain: "kiara-a8a3f.firebaseapp.com",
-    databaseURL: "https://kiara-a8a3f-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "kiara-a8a3f",
-    storageBucket: "kiara-a8a3f.appspot.com",
-    messagingSenderId: "179860561475",
-    appId: "1:179860561475:web:b3d46333894bc7b0e0fef6"
+    //Firebase credentials
   };
 
 firebase.initializeApp(firebaseConfig);
